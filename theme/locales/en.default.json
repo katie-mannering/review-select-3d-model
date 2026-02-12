@@ -1,0 +1,104 @@
+{
+  "general": {
+    "skip_to_content": "Skip to content",
+    "cart": "Cart",
+    "menu": "Menu",
+    "close": "Close",
+    "search": "Search",
+    "pagination_previous": "Previous",
+    "pagination_next": "Next"
+  },
+  "accessibility": {
+    "menu_toggle": "Toggle navigation menu",
+    "cart_count": {
+      "one": "{{ count }} item",
+      "other": "{{ count }} items"
+    },
+    "close_modal": "Close modal",
+    "slide_previous": "Previous slide",
+    "slide_next": "Next slide"
+  },
+  "sections": {
+    "announcement_bar": {
+      "default_text": "Don't dream it, print it."
+    },
+    "header": {
+      "cart_empty": "Your cart is empty"
+    },
+    "footer": {
+      "newsletter_heading": "Stay in the loop",
+      "newsletter_placeholder": "Your email",
+      "newsletter_button": "Subscribe",
+      "copyright": "All rights reserved."
+    },
+    "hero_banner": {
+      "default_heading": "Your face. Our art.",
+      "default_subheading": "Custom 3D printed sculpture busts crafted from your photos.",
+      "default_cta": "Shop Now"
+    },
+    "featured_product": {
+      "default_heading": "The signature bust",
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable"
+    },
+    "how_it_works": {
+      "default_heading": "How it works",
+      "step_1_title": "Upload",
+      "step_1_text": "Send us your favorite photo — any angle, any expression.",
+      "step_2_title": "Sculpt",
+      "step_2_text": "Our artists digitally sculpt your likeness with obsessive detail.",
+      "step_3_title": "Display",
+      "step_3_text": "Receive your museum-quality bust, ready to turn heads."
+    },
+    "philosophy": {
+      "default_heading": "Head in tech, heart in art",
+      "default_text": "We believe everyone deserves to be immortalized in sculpture. What was once reserved for emperors and aristocrats is now available to anyone with a selfie and a sense of humor."
+    },
+    "testimonials": {
+      "default_heading": "What our customers say"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "description": "Description",
+      "variant": "Variant",
+      "price": "Price",
+      "sale_price": "Sale price",
+      "regular_price": "Regular price"
+    }
+  },
+  "collections": {
+    "general": {
+      "no_products": "No products found in this collection.",
+      "items_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      }
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your cart",
+      "empty": "Your cart is empty",
+      "continue_shopping": "Continue shopping",
+      "checkout": "Checkout",
+      "subtotal": "Subtotal",
+      "remove": "Remove",
+      "note_label": "Order notes",
+      "note_placeholder": "Special instructions for your order",
+      "taxes_and_shipping": "Taxes and shipping calculated at checkout"
+    }
+  },
+  "pages": {
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you're looking for has been sculpted out of existence.",
+      "button": "Back to home"
+    }
+  }
+}

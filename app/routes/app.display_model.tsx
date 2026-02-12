@@ -20,7 +20,7 @@ export default function DisplayModels() {
     <model-viewer
       src={modelUrl}
       alt="A rock"
-      exposure="0.008"
+      exposure="1.0"
       camera-controls
       ar
       ar-modes="webxr"

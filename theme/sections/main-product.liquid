@@ -1,0 +1,311 @@
+<section class="main-product section-spacing">
+  <div class="main-product__inner page-width">
+    <div class="main-product__media">
+      {%- if product.images.size > 0 -%}
+        <div class="main-product__gallery">
+          {%- for image in product.images -%}
+            <div class="main-product__gallery-item{% if forloop.first %} is-active{% endif %}" data-gallery-item>
+              {{ image | image_url: width: 900 | image_tag: loading: 'eager', class: 'main-product__gallery-image' }}
+            </div>
+          {%- endfor -%}
+        </div>
+        {%- if product.images.size > 1 -%}
+          <div class="main-product__thumbs">
+            {%- for image in product.images -%}
+              <button
+                class="main-product__thumb{% if forloop.first %} is-active{% endif %}"
+                data-thumb-index="{{ forloop.index0 }}"
+                aria-label="View image {{ forloop.index }}"
+              >
+                {{ image | image_url: width: 120, height: 120, crop: 'center' | image_tag: loading: 'lazy' }}
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      {%- else -%}
+        <div class="main-product__placeholder">
+          {{ 'product-1' | placeholder_svg_tag }}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="main-product__info">
+      <h1 class="main-product__title h2">{{ product.title }}</h1>
+      <p class="main-product__price">
+        {%- if product.compare_at_price > product.price -%}
+          <span class="main-product__price--sale">{{ product.price | money }}</span>
+          <s class="main-product__price--compare">{{ product.compare_at_price | money }}</s>
+        {%- else -%}
+          {{ product.price | money }}
+        {%- endif -%}
+      </p>
+
+      {%- form 'product', product -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+        {%- unless product.has_only_default_variant -%}
+          {%- for option in product.options_with_values -%}
+            <div class="main-product__option">
+              <label class="main-product__option-label" for="option-{{ option.name | handleize }}">
+                {{ option.name }}
+              </label>
+              <select
+                id="option-{{ option.name | handleize }}"
+                class="main-product__select"
+                data-option-index="{{ forloop.index0 }}"
+              >
+                {%- for value in option.values -%}
+                  <option value="{{ value }}" {% if option.selected_value == value %}selected{% endif %}>
+                    {{ value }}
+                  </option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- endfor -%}
+        {%- endunless -%}
+
+        <div class="main-product__quantity">
+          <label class="main-product__option-label" for="quantity">{{ 'products.product.quantity' | t }}</label>
+          <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            class="main-product__quantity-input"
+            value="1"
+            min="1"
+            aria-label="{{ 'products.product.quantity' | t }}"
+          >
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn--primary main-product__submit"
+          {% unless product.available %}disabled{% endunless %}
+        >
+          {%- if product.available -%}
+            {{ 'products.product.add_to_cart' | t }}
+          {%- else -%}
+            {{ 'products.product.sold_out' | t }}
+          {%- endif -%}
+        </button>
+      {%- endform -%}
+
+      {%- if product.description != blank -%}
+        <details class="main-product__details" open>
+          <summary class="main-product__details-toggle">
+            {{ 'products.product.description' | t }}
+          </summary>
+          <div class="main-product__description rte">
+            {{ product.description }}
+          </div>
+        </details>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .main-product__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .main-product__gallery {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-bg-secondary);
+    aspect-ratio: 1;
+  }
+
+  .main-product__gallery-item {
+    display: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  .main-product__gallery-item.is-active {
+    display: block;
+  }
+
+  .main-product__gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .main-product__thumbs {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    overflow-x: auto;
+  }
+
+  .main-product__thumb {
+    flex: 0 0 60px;
+    height: 60px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    transition: border-color var(--transition-fast);
+  }
+
+  .main-product__thumb.is-active {
+    border-color: var(--color-accent);
+  }
+
+  .main-product__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .main-product__placeholder {
+    background: var(--color-bg-secondary);
+    aspect-ratio: 1;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    opacity: 0.3;
+  }
+
+  .main-product__placeholder svg {
+    width: 40%;
+    height: 40%;
+  }
+
+  .main-product__title {
+    margin-bottom: 0.5rem;
+  }
+
+  .main-product__price {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-secondary);
+  }
+
+  .main-product__price--sale {
+    color: var(--color-accent);
+    margin-right: 0.75rem;
+  }
+
+  .main-product__price--compare {
+    font-size: 1.125rem;
+    opacity: 0.6;
+  }
+
+  .main-product__option {
+    margin-bottom: 1rem;
+  }
+
+  .main-product__option-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.375rem;
+  }
+
+  .main-product__select,
+  .main-product__quantity-input {
+    width: 100%;
+    max-width: 200px;
+    padding: 0.625rem 0.75rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    font-size: 0.9375rem;
+  }
+
+  .main-product__quantity {
+    margin-bottom: 1.5rem;
+  }
+
+  .main-product__quantity-input {
+    max-width: 100px;
+  }
+
+  .main-product__submit {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 2rem;
+  }
+
+  .main-product__submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .main-product__details {
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.5rem;
+  }
+
+  .main-product__details-toggle {
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    list-style: none;
+  }
+
+  .main-product__details-toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .main-product__description {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    font-size: 0.9375rem;
+  }
+
+  .main-product__description p + p {
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 750px) {
+    .main-product__inner {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+
+    .main-product__thumb {
+      flex: 0 0 72px;
+      height: 72px;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (function() {
+    var thumbs = document.querySelectorAll('[data-thumb-index]');
+    var items = document.querySelectorAll('[data-gallery-item]');
+    if (!thumbs.length || !items.length) return;
+    thumbs.forEach(function(thumb) {
+      thumb.addEventListener('click', function() {
+        var index = parseInt(thumb.getAttribute('data-thumb-index'), 10);
+        items.forEach(function(item) { item.classList.remove('is-active'); });
+        thumbs.forEach(function(t) { t.classList.remove('is-active'); });
+        if (items[index]) items[index].classList.add('is-active');
+        thumb.classList.add('is-active');
+      });
+    });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:sections.main_product.name",
+  "settings": []
+}
+{% endschema %}

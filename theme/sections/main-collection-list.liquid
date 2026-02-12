@@ -1,0 +1,87 @@
+<section class="collection-list section-spacing">
+  <div class="collection-list__inner page-width">
+    <h1 class="collection-list__title h2">{{ 'general.cart' | t: default: 'Collections' }}</h1>
+    <div class="collection-list__grid grid grid--3">
+      {%- for collection in collections -%}
+        <a href="{{ collection.url }}" class="collection-list__card">
+          <div class="collection-list__image">
+            {%- if collection.image -%}
+              {{ collection.image | image_url: width: 600, height: 400, crop: 'center' | image_tag: loading: 'lazy' }}
+            {%- else -%}
+              <div class="collection-list__placeholder">
+                {{ 'collection-1' | placeholder_svg_tag }}
+              </div>
+            {%- endif -%}
+          </div>
+          <h2 class="collection-list__name">{{ collection.title }}</h2>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .collection-list__title {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .collection-list__card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .collection-list__image {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+    background: var(--color-bg-secondary);
+  }
+
+  .collection-list__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .collection-list__card:hover .collection-list__image img {
+    transform: scale(1.05);
+  }
+
+  .collection-list__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.3;
+    color: var(--color-text-secondary);
+  }
+
+  .collection-list__placeholder svg {
+    width: 50%;
+    height: 50%;
+  }
+
+  .collection-list__name {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    margin-top: 0.75rem;
+    text-align: center;
+    transition: color var(--transition-fast);
+  }
+
+  .collection-list__card:hover .collection-list__name {
+    color: var(--color-accent);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Collection list",
+  "settings": []
+}
+{% endschema %}

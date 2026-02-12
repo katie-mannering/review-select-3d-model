@@ -1,0 +1,71 @@
+{% doc %}
+  Renders a text block with configurable style and alignment.
+
+  @example
+  {% content_for 'block', type: 'text', id: 'text' %}
+{% enddoc %}
+
+<div
+  class="text-block {{ block.settings.text_style }}"
+  style="--text-align: {{ block.settings.alignment }}"
+  {{ block.shopify_attributes }}
+>
+  {{ block.settings.text }}
+</div>
+
+{% stylesheet %}
+  .text-block {
+    text-align: var(--text-align);
+  }
+  .text-block--heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text);
+  }
+  .text-block--subheading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-accent);
+  }
+  .text-block--body {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Text",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.main_page.name",
+      "default": "<p>Add your text here.</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_style",
+      "label": "Style",
+      "options": [
+        { "value": "text-block--heading", "label": "Heading" },
+        { "value": "text-block--subheading", "label": "Subheading" },
+        { "value": "text-block--body", "label": "Body" }
+      ],
+      "default": "text-block--body"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "Alignment",
+      "default": "center"
+    }
+  ],
+  "presets": [{ "name": "Text" }]
+}
+{% endschema %}

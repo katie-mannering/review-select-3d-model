@@ -1,0 +1,93 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "heading": "Your face. Our art.",
+        "subheading": "Custom 3D printed sculpture busts crafted from your photos.",
+        "cta_text": "Shop Now",
+        "overlay_opacity": 60
+      }
+    },
+    "featured": {
+      "type": "featured-product",
+      "settings": {
+        "heading": "The signature bust"
+      }
+    },
+    "how_it_works": {
+      "type": "how-it-works",
+      "settings": {
+        "heading": "How it works"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "icon": "upload",
+            "title": "Upload",
+            "text": "Send us your favorite photo — any angle, any expression."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "icon": "star",
+            "title": "Sculpt",
+            "text": "Our artists digitally sculpt your likeness with obsessive detail."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "icon": "arrow",
+            "title": "Display",
+            "text": "Receive your museum-quality bust, ready to turn heads."
+          }
+        }
+      },
+      "block_order": ["step_1", "step_2", "step_3"]
+    },
+    "philosophy": {
+      "type": "philosophy",
+      "settings": {
+        "heading": "Head in tech, heart in art",
+        "text": "<p>We believe everyone deserves to be immortalized in sculpture. What was once reserved for emperors and aristocrats is now available to anyone with a selfie and a sense of humor.</p>"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "heading": "What our customers say"
+      },
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Absolutely incredible. My bust sits on my mantle and everyone asks about it. Worth every penny.",
+            "author": "Sarah M."
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "I gave one to my dad for Father's Day. He said it was the most narcissistic gift he's ever received — and also his favorite.",
+            "author": "James K."
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "The detail is mind-blowing. They even captured my crooked smile perfectly.",
+            "author": "Maya R."
+          }
+        }
+      },
+      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"]
+    }
+  },
+  "order": ["hero", "featured", "how_it_works", "philosophy", "testimonials"]
+}

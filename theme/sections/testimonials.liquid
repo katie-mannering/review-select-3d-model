@@ -1,0 +1,135 @@
+<section class="testimonials section-spacing">
+  <div class="testimonials__inner page-width">
+    <h2 class="testimonials__heading h2">
+      {%- if section.settings.heading != blank -%}{{ section.settings.heading }}{%- else -%}{{ 'sections.testimonials.default_heading' | t }}{%- endif -%}
+    </h2>
+    {%- if section.blocks.size > 0 -%}
+      <div class="testimonials__track" data-testimonials-track>
+        {%- for block in section.blocks -%}
+          <blockquote class="testimonials__card" {{ block.shopify_attributes }}>
+            <div class="testimonials__stars">
+              {%- for i in (1..block.settings.rating) -%}
+                {%- render 'icon', name: 'star', size: 16 -%}
+              {%- endfor -%}
+            </div>
+            <p class="testimonials__quote">{{ block.settings.quote }}</p>
+            <cite class="testimonials__author">{{ block.settings.author }}</cite>
+          </blockquote>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .testimonials__heading {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .testimonials__track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 1rem;
+  }
+
+  .testimonials__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonials__card {
+    flex: 0 0 min(85vw, 360px);
+    scroll-snap-align: start;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .testimonials__stars {
+    display: flex;
+    gap: 0.125rem;
+    color: var(--color-accent);
+  }
+
+  .testimonials__quote {
+    color: var(--color-text);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .testimonials__author {
+    font-style: normal;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @media (min-width: 750px) {
+    .testimonials__card {
+      flex: 0 0 360px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.testimonials.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.testimonials.settings.heading.label",
+      "default": "What our customers say"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "t:sections.testimonials.blocks.testimonial.name",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "min": 1,
+          "max": 5,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Absolutely incredible. My bust sits on my mantle and everyone asks about it."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "A happy customer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.testimonials.name",
+      "blocks": [
+        { "type": "testimonial", "settings": { "rating": 5, "quote": "Absolutely incredible. My bust sits on my mantle and everyone asks about it. Worth every penny.", "author": "Sarah M." } },
+        { "type": "testimonial", "settings": { "rating": 5, "quote": "I gave one to my dad for Father's Day. He said it was the most narcissistic gift he's ever received — and also his favorite.", "author": "James K." } },
+        { "type": "testimonial", "settings": { "rating": 5, "quote": "The detail is mind-blowing. They even captured my crooked smile perfectly.", "author": "Maya R." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

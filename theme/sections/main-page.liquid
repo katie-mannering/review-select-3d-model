@@ -1,0 +1,66 @@
+<section class="main-page section-spacing">
+  <div class="main-page__inner page-width">
+    <h1 class="main-page__title h2">{{ page.title }}</h1>
+    {%- if page.content != blank -%}
+      <div class="main-page__content rte">
+        {{ page.content }}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .main-page__inner {
+    max-width: 800px;
+  }
+
+  .main-page__title {
+    margin-bottom: 2rem;
+  }
+
+  .main-page__content {
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+
+  .main-page__content h2,
+  .main-page__content h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .main-page__content p + p {
+    margin-top: 1rem;
+  }
+
+  .main-page__content a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .main-page__content a:hover {
+    opacity: 0.8;
+  }
+
+  .main-page__content ul,
+  .main-page__content ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    list-style: revert;
+  }
+
+  .main-page__content img {
+    border-radius: var(--radius-md);
+    margin: 1.5rem 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.main_page.name",
+  "settings": []
+}
+{% endschema %}

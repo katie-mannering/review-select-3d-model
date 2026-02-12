@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>
+    {%- if page_title -%}
+      {{ page_title }}
+      {%- if current_page != 1 %} &ndash; {{ 'general.pagination_previous' | t }} {{ current_page }}{% endif -%}
+      &ndash; {{ shop.name }}
+    {%- else -%}
+      {{ shop.name }}
+    {%- endif -%}
+  </title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {% comment %} Shopify required header content {% endcomment %}
+  {{ content_for_header }}
+
+  {% comment %} Font declarations {% endcomment %}
+  <style>
+    {{ settings.font_heading | font_face: font_display: 'swap' }}
+    {{ settings.font_body | font_face: font_display: 'swap' }}
+  </style>
+
+  {% comment %} CSS custom properties from theme settings {% endcomment %}
+  {% style %}
+    :root {
+      --color-bg-primary: {{ settings.color_bg_primary }};
+      --color-bg-secondary: {{ settings.color_bg_secondary }};
+      --color-accent: {{ settings.color_accent }};
+      --color-text: {{ settings.color_text }};
+      --color-text-secondary: {{ settings.color_text_secondary }};
+      --color-border: {{ settings.color_border }};
+      --font-heading: {{ settings.font_heading.family }}, {{ settings.font_heading.fallback_families }};
+      --font-body: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
+    }
+  {% endstyle %}
+
+  {{ 'critical.css' | asset_url | stylesheet_tag }}
+</head>
+<body>
+  <a class="skip-to-content" href="#main-content">
+    {{ 'general.skip_to_content' | t }}
+  </a>
+
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
+
+  <main id="main-content" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+</body>
+</html>

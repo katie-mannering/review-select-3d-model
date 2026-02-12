@@ -1,0 +1,92 @@
+{%- if section.blocks.size > 0 -%}
+  <div class="announcement-bar" role="region" aria-label="{{ 'sections.announcement_bar.default_text' | t }}">
+    <div class="announcement-bar__slider" data-announcement-slider>
+      {%- for block in section.blocks -%}
+        <p class="announcement-bar__message{% if forloop.first %} is-active{% endif %}" {{ block.shopify_attributes }}>
+          {{- block.settings.text -}}
+        </p>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .announcement-bar {
+    background-color: var(--color-accent);
+    color: var(--color-bg-primary);
+    text-align: center;
+    padding: 0.5rem var(--page-gutter);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    overflow: hidden;
+    position: relative;
+    min-height: 2rem;
+  }
+
+  .announcement-bar__slider {
+    position: relative;
+  }
+
+  .announcement-bar__message {
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 500ms ease;
+  }
+
+  .announcement-bar__message.is-active {
+    opacity: 1;
+    position: relative;
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (function() {
+    var slider = document.querySelector('[data-announcement-slider]');
+    if (!slider) return;
+    var messages = slider.querySelectorAll('.announcement-bar__message');
+    if (messages.length <= 1) return;
+    var current = 0;
+    setInterval(function() {
+      messages[current].classList.remove('is-active');
+      current = (current + 1) % messages.length;
+      messages[current].classList.add('is-active');
+    }, 4000);
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:sections.announcement_bar.name",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement_bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:sections.announcement_bar.settings.text.label",
+          "default": "Don't dream it, print it."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.announcement_bar.name",
+      "blocks": [
+        { "type": "announcement", "settings": { "text": "Don't dream it, print it." } },
+        { "type": "announcement", "settings": { "text": "Free shipping on orders over $150" } },
+        { "type": "announcement", "settings": { "text": "Custom busts crafted from your photos" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

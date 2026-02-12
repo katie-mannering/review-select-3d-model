@@ -1,0 +1,19 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "color_bg_primary": "#1a1a2e",
+      "color_bg_secondary": "#16213e",
+      "color_accent": "#c9a96e",
+      "color_text": "#f0e6d3",
+      "color_text_secondary": "#a89f91",
+      "color_border": "#2a2a3e",
+      "font_heading": "playfair_display_n4",
+      "font_body": "assistant_n4",
+      "social_instagram": "",
+      "social_tiktok": "",
+      "social_twitter": "",
+      "social_facebook": ""
+    }
+  }
+}

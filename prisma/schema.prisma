@@ -14,21 +14,21 @@ datasource db {
 }
 
 model Session {
-  id            String    @id
-  shop          String
-  state         String
-  isOnline      Boolean   @default(false)
-  scope         String?
-  expires       DateTime?
-  accessToken   String
-  userId        BigInt?
-  firstName     String?
-  lastName      String?
-  email         String?
-  accountOwner  Boolean   @default(false)
-  locale        String?
-  collaborator  Boolean?  @default(false)
-  emailVerified Boolean?  @default(false)
+  id                  String    @id
+  shop                String
+  state               String
+  isOnline            Boolean   @default(false)
+  scope               String?
+  expires             DateTime?
+  accessToken         String
+  userId              BigInt?
+  firstName           String?
+  lastName            String?
+  email               String?
+  accountOwner        Boolean   @default(false)
+  locale              String?
+  collaborator        Boolean?  @default(false)
+  emailVerified       Boolean?  @default(false)
   refreshToken        String?
   refreshTokenExpires DateTime?
 }
@@ -38,8 +38,9 @@ model ModelOrder {
   shopify_cust_id  String
   shopify_order_id String
 
-  ModelGenerations ModelGenerations[]
+  order_status     OrderStatus
   ModelOrderInputs ModelOrderInputs[]
+  ModelGenerations ModelGenerations[]
 }
 
 model ModelOrderInputs {
@@ -53,19 +54,22 @@ model ModelGenerations {
   id             Int              @id
   ModelOrder     ModelOrder       @relation(fields: [modelOrderId], references: [id])
   modelOrderId   Int
-  status         GenerationStatus @default(REQUESTED)
   selectedByCust Boolean          @default(false)
   glbUrl         String?
   stlUrl         String?
   mf3Url         String?
 }
 
-enum GenerationStatus {
+enum OrderStatus {
   REQUESTED
-  PREPROCESSING
-  GENERATING
+  AWAITING_IMAGE
+  PREPROCESSING_IMAGE
+  GENERATING_3D_MODEL
   POSTPROCESSING
-  SUCCESS
-  FAILURE
+  MODEL_QA
+  QA_OK
+  QA_NOK
+  AWAITING_CHOICE
+  READY_FOR_PRINING
+  CANCELLED
 }
-

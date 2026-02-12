@@ -1,0 +1,98 @@
+<section class="main-collection section-spacing">
+  <div class="main-collection__inner page-width">
+    <header class="main-collection__header">
+      <h1 class="main-collection__title h2">{{ collection.title }}</h1>
+      {%- if collection.description != blank -%}
+        <p class="main-collection__description">{{ collection.description }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- if collection.products.size > 0 -%}
+        <div class="main-collection__grid grid grid--3">
+          {%- for product in collection.products -%}
+            {%- render 'product-card', product: product -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <nav class="main-collection__pagination" aria-label="Pagination">
+            {{ paginate | default_pagination }}
+          </nav>
+        {%- endif -%}
+      {%- else -%}
+        <p class="main-collection__empty">{{ 'collections.general.no_products' | t }}</p>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .main-collection__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .main-collection__description {
+    color: var(--color-text-secondary);
+    margin-top: 0.75rem;
+    max-width: 600px;
+    margin-inline: auto;
+    line-height: 1.7;
+  }
+
+  .main-collection__empty {
+    text-align: center;
+    color: var(--color-text-secondary);
+    padding: 4rem 0;
+  }
+
+  .main-collection__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    font-size: 0.875rem;
+  }
+
+  .main-collection__pagination a,
+  .main-collection__pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .main-collection__pagination a:hover {
+    color: var(--color-accent);
+    background-color: var(--color-bg-secondary);
+  }
+
+  .main-collection__pagination span.current {
+    background-color: var(--color-accent);
+    color: var(--color-bg-primary);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.main_collection.name",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "t:sections.main_collection.settings.products_per_page.label",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "default": 12
+    }
+  ]
+}
+{% endschema %}

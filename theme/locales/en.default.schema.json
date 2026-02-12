@@ -1,0 +1,152 @@
+{
+  "sections": {
+    "announcement_bar": {
+      "name": "Announcement bar",
+      "settings": {
+        "text": {
+          "label": "Announcement text"
+        },
+        "auto_rotate": {
+          "label": "Auto-rotate announcements"
+        },
+        "rotation_speed": {
+          "label": "Rotation speed (seconds)"
+        }
+      },
+      "blocks": {
+        "announcement": {
+          "name": "Announcement"
+        }
+      }
+    },
+    "header": {
+      "name": "Header",
+      "settings": {
+        "logo": {
+          "label": "Logo image"
+        },
+        "logo_width": {
+          "label": "Logo width (px)"
+        },
+        "menu": {
+          "label": "Navigation menu"
+        }
+      }
+    },
+    "footer": {
+      "name": "Footer",
+      "settings": {
+        "show_newsletter": {
+          "label": "Show newsletter signup"
+        },
+        "show_social": {
+          "label": "Show social media links"
+        }
+      },
+      "blocks": {
+        "link_list": {
+          "name": "Link list"
+        }
+      }
+    },
+    "hero_banner": {
+      "name": "Hero banner",
+      "settings": {
+        "image": {
+          "label": "Background image"
+        },
+        "heading": {
+          "label": "Heading"
+        },
+        "subheading": {
+          "label": "Subheading"
+        },
+        "cta_text": {
+          "label": "Button text"
+        },
+        "cta_link": {
+          "label": "Button link"
+        },
+        "overlay_opacity": {
+          "label": "Overlay opacity"
+        }
+      }
+    },
+    "featured_product": {
+      "name": "Featured product",
+      "settings": {
+        "product": {
+          "label": "Product"
+        },
+        "heading": {
+          "label": "Heading"
+        }
+      }
+    },
+    "how_it_works": {
+      "name": "How it works",
+      "settings": {
+        "heading": {
+          "label": "Heading"
+        }
+      },
+      "blocks": {
+        "step": {
+          "name": "Step"
+        }
+      }
+    },
+    "philosophy": {
+      "name": "Philosophy",
+      "settings": {
+        "heading": {
+          "label": "Heading"
+        },
+        "text": {
+          "label": "Body text"
+        },
+        "image": {
+          "label": "Image"
+        }
+      }
+    },
+    "testimonials": {
+      "name": "Testimonials",
+      "settings": {
+        "heading": {
+          "label": "Heading"
+        }
+      },
+      "blocks": {
+        "testimonial": {
+          "name": "Testimonial"
+        }
+      }
+    },
+    "main_product": {
+      "name": "Product page"
+    },
+    "main_collection": {
+      "name": "Collection page",
+      "settings": {
+        "products_per_page": {
+          "label": "Products per page"
+        }
+      }
+    },
+    "main_cart": {
+      "name": "Cart page",
+      "settings": {
+        "show_note": {
+          "label": "Show order note"
+        }
+      }
+    },
+    "main_page": {
+      "name": "Page content"
+    },
+    "main_404": {
+      "name": "404 page"
+    }
+  }
+}

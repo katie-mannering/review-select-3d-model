@@ -1,0 +1,143 @@
+<section class="how-it-works section-spacing">
+  <div class="how-it-works__inner page-width">
+    <h2 class="how-it-works__heading h2">
+      {%- if section.settings.heading != blank -%}{{ section.settings.heading }}{%- else -%}{{ 'sections.how_it_works.default_heading' | t }}{%- endif -%}
+    </h2>
+    <div class="how-it-works__steps">
+      {%- for block in section.blocks -%}
+        <div class="how-it-works__step" {{ block.shopify_attributes }}>
+          <span class="how-it-works__number">{{ forloop.index }}</span>
+          <div class="how-it-works__icon">
+            {%- case block.settings.icon -%}
+              {%- when 'upload' -%}
+                {%- render 'icon', name: 'upload', size: 32 -%}
+              {%- when 'star' -%}
+                {%- render 'icon', name: 'star', size: 32 -%}
+              {%- else -%}
+                {%- render 'icon', name: 'arrow-right', size: 32 -%}
+            {%- endcase -%}
+          </div>
+          <h3 class="how-it-works__step-title">{{ block.settings.title }}</h3>
+          <p class="how-it-works__step-text">{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .how-it-works {
+    background-color: var(--color-bg-secondary);
+  }
+
+  .how-it-works__heading {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .how-it-works__steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .how-it-works__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .how-it-works__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .how-it-works__icon {
+    color: var(--color-accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .how-it-works__step-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+  }
+
+  .how-it-works__step-text {
+    color: var(--color-text-secondary);
+    max-width: 280px;
+    line-height: 1.6;
+    font-size: 0.9375rem;
+  }
+
+  @media (min-width: 750px) {
+    .how-it-works__steps {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.how_it_works.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.how_it_works.settings.heading.label",
+      "default": "How it works"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "t:sections.how_it_works.blocks.step.name",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "upload", "label": "Upload" },
+            { "value": "star", "label": "Star" },
+            { "value": "arrow", "label": "Arrow" }
+          ],
+          "default": "upload"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Step"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Describe this step."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.how_it_works.name",
+      "blocks": [
+        { "type": "step", "settings": { "icon": "upload", "title": "Upload", "text": "Send us your favorite photo — any angle, any expression." } },
+        { "type": "step", "settings": { "icon": "star", "title": "Sculpt", "text": "Our artists digitally sculpt your likeness with obsessive detail." } },
+        { "type": "step", "settings": { "icon": "arrow", "title": "Display", "text": "Receive your museum-quality bust, ready to turn heads." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,109 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Sculpted",
+    "theme_version": "1.0.0",
+    "theme_author": "Sculpted Studio",
+    "theme_documentation_url": "https://github.com/sculpted-studio/theme",
+    "theme_support_url": "https://github.com/sculpted-studio/theme/issues"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Primary colors"
+      },
+      {
+        "type": "color",
+        "id": "color_bg_primary",
+        "label": "Primary background",
+        "default": "#1a1a2e"
+      },
+      {
+        "type": "color",
+        "id": "color_bg_secondary",
+        "label": "Secondary background",
+        "default": "#16213e"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent",
+        "default": "#c9a96e"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#f0e6d3"
+      },
+      {
+        "type": "color",
+        "id": "color_text_secondary",
+        "label": "Secondary text",
+        "default": "#a89f91"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Border",
+        "default": "#2a2a3e"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Headings"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Heading font",
+        "default": "playfair_display_n4"
+      },
+      {
+        "type": "header",
+        "content": "Body"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body font",
+        "default": "assistant_n4"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Accounts"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok URL"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter",
+        "label": "X / Twitter URL"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook URL"
+      }
+    ]
+  }
+]

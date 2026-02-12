@@ -1,0 +1,107 @@
+{% doc %}
+  Renders a product card with image, title, and price.
+
+  @param {product} product - The product object to display
+  @param {string} [css_class] - Optional additional CSS class
+
+  @example
+  {% render 'product-card', product: product %}
+{% enddoc %}
+
+<article class="product-card {{ css_class }}">
+  <a href="{{ product.url }}" class="product-card__link" aria-label="{{ product.title }}">
+    <div class="product-card__media">
+      {%- if product.featured_image -%}
+        {{ product.featured_image | image_url: width: 600, height: 600, crop: 'center' | image_tag: loading: 'lazy', class: 'product-card__image' }}
+      {%- else -%}
+        <div class="product-card__placeholder">
+          {{ 'product-1' | placeholder_svg_tag }}
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="product-card__info">
+      <h3 class="product-card__title">{{ product.title }}</h3>
+      <p class="product-card__price">
+        {%- if product.compare_at_price > product.price -%}
+          <span class="product-card__price--sale">{{ product.price | money }}</span>
+          <s class="product-card__price--compare">{{ product.compare_at_price | money }}</s>
+        {%- else -%}
+          {{ product.price | money }}
+        {%- endif -%}
+      </p>
+    </div>
+  </a>
+</article>
+
+{% stylesheet %}
+  .product-card {
+    position: relative;
+  }
+
+  .product-card__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .product-card__media {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    aspect-ratio: 1;
+    background-color: var(--color-bg-secondary);
+  }
+
+  .product-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .product-card__link:hover .product-card__image {
+    transform: scale(1.05);
+  }
+
+  .product-card__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+  }
+
+  .product-card__placeholder svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .product-card__info {
+    padding-top: 0.75rem;
+  }
+
+  .product-card__title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .product-card__price {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+  }
+
+  .product-card__price--sale {
+    color: var(--color-accent);
+    margin-right: 0.5rem;
+  }
+
+  .product-card__price--compare {
+    color: var(--color-text-secondary);
+    opacity: 0.6;
+    font-size: 0.875rem;
+  }
+{% endstylesheet %}

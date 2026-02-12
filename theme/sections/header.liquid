@@ -1,0 +1,254 @@
+<header class="header" data-header>
+  <div class="header__inner page-width">
+    <a href="{{ routes.root_url }}" class="header__logo">
+      {%- if section.settings.logo -%}
+        {{ section.settings.logo | image_url: width: section.settings.logo_width | image_tag: class: 'header__logo-image', loading: 'eager' }}
+      {%- else -%}
+        <span class="header__logo-text">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    {%- assign main_menu = section.settings.menu -%}
+    <nav class="header__nav" aria-label="Main navigation">
+      {%- if main_menu -%}
+        <ul class="header__nav-list" role="list">
+          {%- for link in main_menu.links -%}
+            <li class="header__nav-item">
+              <a href="{{ link.url }}" class="header__nav-link{% if link.active %} is-active{% endif %}">
+                {{ link.title }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </nav>
+
+    <div class="header__actions">
+      <a href="{{ routes.cart_url }}" class="header__cart" aria-label="{{ 'general.cart' | t }}">
+        {%- render 'icon', name: 'cart', size: 22 -%}
+        {%- if cart.item_count > 0 -%}
+          <span class="header__cart-count" aria-label="{{ 'accessibility.cart_count' | t: count: cart.item_count }}">
+            {{ cart.item_count }}
+          </span>
+        {%- endif -%}
+      </a>
+      <button class="header__menu-toggle" data-menu-toggle aria-label="{{ 'accessibility.menu_toggle' | t }}" aria-expanded="false">
+        <span class="header__menu-icon" data-menu-icon-open>{%- render 'icon', name: 'menu', size: 22 -%}</span>
+        <span class="header__menu-icon header__menu-icon--close" data-menu-icon-close>{%- render 'icon', name: 'close', size: 22 -%}</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="header__mobile-nav" data-mobile-nav aria-label="Mobile navigation">
+    {%- if main_menu -%}
+      <ul class="header__mobile-list" role="list">
+        {%- for link in main_menu.links -%}
+          <li>
+            <a href="{{ link.url }}" class="header__mobile-link{% if link.active %} is-active{% endif %}">
+              {{ link.title }}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</header>
+
+{% stylesheet %}
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-bg-primary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+    gap: 2rem;
+  }
+
+  .header__logo {
+    flex-shrink: 0;
+    text-decoration: none;
+  }
+
+  .header__logo-text {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 0.02em;
+  }
+
+  .header__logo-image {
+    height: auto;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .header__nav-list {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .header__nav-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+    text-decoration: none;
+  }
+
+  .header__nav-link:hover,
+  .header__nav-link.is-active {
+    color: var(--color-accent);
+  }
+
+  .header__actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .header__cart {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--color-text);
+    transition: color var(--transition-fast);
+  }
+
+  .header__cart:hover {
+    color: var(--color-accent);
+  }
+
+  .header__cart-count {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background: var(--color-accent);
+    color: var(--color-bg-primary);
+    font-size: 0.625rem;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header__menu-toggle {
+    display: flex;
+    align-items: center;
+    color: var(--color-text);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .header__menu-icon--close {
+    display: none;
+  }
+
+  .header__menu-toggle[aria-expanded="true"] .header__menu-icon--close {
+    display: block;
+  }
+
+  .header__menu-toggle[aria-expanded="true"] [data-menu-icon-open] {
+    display: none;
+  }
+
+  .header__mobile-nav {
+    display: none;
+    background-color: var(--color-bg-primary);
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.5rem var(--page-gutter);
+  }
+
+  .header__mobile-nav.is-open {
+    display: block;
+  }
+
+  .header__mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .header__mobile-link {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-border);
+    transition: color var(--transition-fast);
+  }
+
+  .header__mobile-link:hover,
+  .header__mobile-link.is-active {
+    color: var(--color-accent);
+  }
+
+  @media (min-width: 750px) {
+    .header__nav {
+      display: block;
+    }
+    .header__menu-toggle {
+      display: none;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (function() {
+    var toggle = document.querySelector('[data-menu-toggle]');
+    var nav = document.querySelector('[data-mobile-nav]');
+    if (!toggle || !nav) return;
+    toggle.addEventListener('click', function() {
+      var expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('is-open');
+    });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:sections.header.settings.logo.label"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "t:sections.header.settings.logo_width.label",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "default": 120,
+      "unit": "px"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:sections.header.settings.menu.label",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}
