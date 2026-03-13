@@ -32,9 +32,10 @@
       "copyright": "All rights reserved."
     },
     "hero_banner": {
-      "default_heading": "Your image. Our tech.",
+      "default_heading": "Your images. Our tech.",
       "default_subheading": "Custom 3D printed sculpture busts crafted from your photos.",
-      "default_cta": "Shop Now"
+      "default_cta": "Shop Now",
+      "default_tagline": "Where craft meets code"
     },
     "featured_product": {
       "default_heading": "The signature bust",
@@ -52,8 +53,13 @@
       "step_3_text": "Receive your museum-quality bust, ready to turn heads."
     },
     "philosophy": {
-      "default_heading": "Head in tech, heart in art",
+      "default_heading": "where craft meets code",
       "default_text": "We believe everyone deserves to be immortalized in sculpture. What was once reserved for emperors and aristocrats is now available to anyone with a selfie and a sense of humor."
+    },
+    "before_after": {
+      "default_heading": "See the transformation",
+      "before_label": "Before",
+      "after_label": "After"
     },
     "testimonials": {
       "default_heading": "What our customers say"

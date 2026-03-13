@@ -4,7 +4,7 @@
       {%- if section.settings.logo -%}
         {{ section.settings.logo | image_url: width: section.settings.logo_width | image_tag: class: 'header__logo-image', loading: 'eager' }}
       {%- else -%}
-        <span class="header__logo-text">{{ shop.name }}</span>
+        <img src="{{ 'incahoots3d_logo_v2.svg' | asset_url }}" alt="{{ shop.name }}" class="header__logo-image" width="{{ section.settings.logo_width }}" height="auto" loading="eager">
       {%- endif -%}
     </a>
 
@@ -86,6 +86,8 @@
 
   .header__logo-image {
     height: auto;
+    max-height: 50px;
+    width: auto;
   }
 
   .header__nav {

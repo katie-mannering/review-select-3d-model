@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 210" width="580" height="210">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080B12"/>
+      <stop offset="100%" style="stop-color:#0F1622"/>
+    </linearGradient>
+
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="0 0.5 0 0 0  0 0.9 0.3 0 0  0 0 0.5 0 0  0 0 0 0.45 0" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="nozzleGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="1 0.3 0 0 0  0.4 0.1 0 0 0  0 0 0 0 0  0 0 0 0.8 0" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Cube gradients - teal/green palette -->
+    <linearGradient id="faceTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2DD4BF"/>
+      <stop offset="100%" style="stop-color:#0D9488"/>
+    </linearGradient>
+    <linearGradient id="faceLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#042F2E"/>
+      <stop offset="100%" style="stop-color:#031F1F"/>
+    </linearGradient>
+    <linearGradient id="faceRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0F766E"/>
+      <stop offset="100%" style="stop-color:#0D6B63"/>
+    </linearGradient>
+
+    <!-- Cube 2 - warm amber -->
+    <linearGradient id="c2Top" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FCD34D"/>
+      <stop offset="100%" style="stop-color:#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="c2Left" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#451A03"/>
+      <stop offset="100%" style="stop-color:#3A1502"/>
+    </linearGradient>
+    <linearGradient id="c2Right" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#B45309"/>
+      <stop offset="100%" style="stop-color:#92400E"/>
+    </linearGradient>
+
+    <!-- Cube 3 - violet -->
+    <linearGradient id="c3Top" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C084FC"/>
+      <stop offset="100%" style="stop-color:#9333EA"/>
+    </linearGradient>
+    <linearGradient id="c3Left" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2E1065"/>
+      <stop offset="100%" style="stop-color:#1E0A3C"/>
+    </linearGradient>
+    <linearGradient id="c3Right" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7E22CE"/>
+      <stop offset="100%" style="stop-color:#6B21A8"/>
+    </linearGradient>
+
+    <!-- Nozzle thread gradient -->
+    <linearGradient id="threadGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:0"/>
+      <stop offset="40%" style="stop-color:#FF6B35;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#FF6B35;stop-opacity:0.95"/>
+    </linearGradient>
+
+    <!-- Wordmark underline gradient -->
+    <linearGradient id="ruleLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2DD4BF;stop-opacity:0"/>
+      <stop offset="15%" style="stop-color:#2DD4BF"/>
+      <stop offset="45%" style="stop-color:#FCD34D"/>
+      <stop offset="75%" style="stop-color:#C084FC"/>
+      <stop offset="100%" style="stop-color:#C084FC;stop-opacity:0"/>
+    </linearGradient>
+
+    <!-- Byline gradient text fill -->
+    <linearGradient id="bylineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2DD4BF"/>
+      <stop offset="40%" style="stop-color:#94A3B8"/>
+      <stop offset="70%" style="stop-color:#C084FC"/>
+      <stop offset="100%" style="stop-color:#C084FC"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="580" height="210" fill="url(#bgGrad)" rx="16"/>
+
+  <!-- Corner bracket accents -->
+  <polyline points="14,34 14,14 34,14" fill="none" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <polyline points="546,14 566,14 566,34" fill="none" stroke="#C084FC" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <polyline points="14,176 14,196 34,196" fill="none" stroke="#FCD34D" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <polyline points="546,196 566,196 566,176" fill="none" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- Subtle horizontal scan line -->
+  <rect x="0" y="104" width="580" height="0.5" fill="#FFFFFF" opacity="0.03" rx="1"/>
+
+  <!-- ===== ICON GROUP ===== -->
+  <g transform="translate(22, 18)" filter="url(#softGlow)">
+
+    <!-- CUBE 1 — teal, back left -->
+    <polygon points="72,60 100,44 128,60 100,76" fill="url(#faceTop)"/>
+    <polygon points="72,60 100,76 100,108 72,92"  fill="url(#faceLeft)"/>
+    <polygon points="128,60 100,76 100,108 128,92" fill="url(#faceRight)"/>
+    <line x1="72" y1="70" x2="100" y2="86" stroke="#2DD4BF" stroke-width="0.6" opacity="0.35"/>
+    <line x1="72" y1="80" x2="100" y2="96" stroke="#2DD4BF" stroke-width="0.6" opacity="0.35"/>
+    <line x1="72" y1="90" x2="90"  y2="100" stroke="#2DD4BF" stroke-width="0.6" opacity="0.25"/>
+    <polyline points="100,44 128,60 128,92 100,108 72,92 72,60 100,44"
+      fill="none" stroke="#2DD4BF" stroke-width="1.1" opacity="0.55"/>
+    <line x1="100" y1="76" x2="100" y2="108" stroke="#2DD4BF" stroke-width="0.8" opacity="0.35"/>
+
+    <!-- CUBE 2 — amber, front center (lower) -->
+    <polygon points="100,90 128,74 156,90 128,106" fill="url(#c2Top)"/>
+    <polygon points="100,90 128,106 128,138 100,122" fill="url(#c2Left)"/>
+    <polygon points="156,90 128,106 128,138 156,122" fill="url(#c2Right)"/>
+    <line x1="100" y1="100" x2="128" y2="116" stroke="#FCD34D" stroke-width="0.6" opacity="0.35"/>
+    <line x1="100" y1="110" x2="128" y2="126" stroke="#FCD34D" stroke-width="0.6" opacity="0.35"/>
+    <line x1="100" y1="120" x2="114" y2="128" stroke="#FCD34D" stroke-width="0.6" opacity="0.25"/>
+    <polyline points="128,74 156,90 156,122 128,138 100,122 100,90 128,74"
+      fill="none" stroke="#FCD34D" stroke-width="1.1" opacity="0.55"/>
+    <line x1="128" y1="106" x2="128" y2="138" stroke="#FCD34D" stroke-width="0.8" opacity="0.35"/>
+
+    <!-- CUBE 3 — violet, back right -->
+    <polygon points="128,60 156,44 184,60 156,76" fill="url(#c3Top)"/>
+    <polygon points="128,60 156,76 156,108 128,92" fill="url(#c3Left)"/>
+    <polygon points="184,60 156,76 156,108 184,92" fill="url(#c3Right)"/>
+    <line x1="128" y1="70" x2="156" y2="86" stroke="#C084FC" stroke-width="0.6" opacity="0.35"/>
+    <line x1="128" y1="80" x2="156" y2="96" stroke="#C084FC" stroke-width="0.6" opacity="0.35"/>
+    <line x1="128" y1="90" x2="144" y2="100" stroke="#C084FC" stroke-width="0.6" opacity="0.25"/>
+    <polyline points="156,44 184,60 184,92 156,108 128,92 128,60 156,44"
+      fill="none" stroke="#C084FC" stroke-width="1.1" opacity="0.55"/>
+    <line x1="156" y1="76" x2="156" y2="108" stroke="#C084FC" stroke-width="0.8" opacity="0.35"/>
+
+    <!-- Nozzle arm rail -->
+    <line x1="94" y1="22" x2="162" y2="22" stroke="#334155" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="94"  cy="22" r="3" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+    <circle cx="162" cy="22" r="3" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+
+    <!-- Nozzle head body -->
+    <rect x="120" y="14" width="16" height="10" rx="2.5" fill="#1E293B" stroke="#475569" stroke-width="0.8"/>
+    <rect x="124" y="23" width="8"  height="6"  rx="1"   fill="#0F172A" stroke="#334155" stroke-width="0.7"/>
+
+    <!-- Filament thread -->
+    <line x1="128" y1="29" x2="128" y2="73" stroke="url(#threadGrad)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Nozzle tip + glow -->
+    <circle cx="128" cy="74" r="4"  fill="#FF6B35" filter="url(#nozzleGlow)" opacity="0.95"/>
+    <circle cx="128" cy="74" r="9"  fill="#FF6B35" opacity="0.1"/>
+    <circle cx="128" cy="74" r="14" fill="#FF6B35" opacity="0.04"/>
+
+    <!-- Cahoots connector dashes -->
+    <line x1="100" y1="76" x2="118" y2="86" stroke="#FFFFFF" stroke-width="0.8" stroke-dasharray="2.5,3" opacity="0.18"/>
+    <line x1="156" y1="76" x2="138" y2="86" stroke="#FFFFFF" stroke-width="0.8" stroke-dasharray="2.5,3" opacity="0.18"/>
+
+    <!-- Ground shadow -->
+    <ellipse cx="128" cy="148" rx="58" ry="9" fill="#2DD4BF" opacity="0.05"/>
+  </g>
+
+  <!-- ===== WORDMARK ===== -->
+  <!-- "incahoots" -->
+  <text x="238" y="97"
+    font-family="'Courier New', Courier, monospace"
+    font-size="40"
+    font-weight="700"
+    letter-spacing="0.5"
+    fill="#F1F5F9">incahoots</text>
+
+  <!-- "3D" — teal accent -->
+  <text x="464" y="97"
+    font-family="'Courier New', Courier, monospace"
+    font-size="40"
+    font-weight="700"
+    letter-spacing="0.5"
+    fill="#2DD4BF"
+    filter="url(#glow)">3D</text>
+
+  <!-- Colour rule under name -->
+  <rect x="238" y="105" width="262" height="2" fill="url(#ruleLine)" rx="1"/>
+
+  <!-- Byline: "where craft meets code" -->
+  <text x="239" y="132"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-style="italic"
+    font-size="13.5"
+    letter-spacing="1.5"
+    fill="url(#bylineGrad)">where craft meets code</text>
+
+  <!-- em-dash before byline (decorative) -->
+  <line x1="238" y1="148" x2="500" y2="148" stroke="#1E293B" stroke-width="1" opacity="0.8"/>
+</svg>

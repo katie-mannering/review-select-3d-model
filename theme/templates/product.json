@@ -3,7 +3,118 @@
     "main": {
       "type": "main-product",
       "settings": {}
+    },
+    "how_it_works": {
+      "type": "how-it-works",
+      "settings": {
+        "heading": "Your journey — from photo to sculpture",
+        "compact": false
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "icon": "upload",
+            "title": "Place your order",
+            "text": "Add the bust to your cart and complete your purchase."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "icon": "upload",
+            "title": "Upload your photo",
+            "text": "You'll receive a link to securely upload your chosen photo — any clear, well-lit shot works best."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "icon": "star",
+            "title": "We generate your models",
+            "text": "Our system processes your photo and produces a selection of 3D sculpted model options."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "icon": "star",
+            "title": "You review & select",
+            "text": "Browse your personalised model options in our 3D viewer and choose the one that looks most like you."
+          }
+        },
+        "step_5": {
+          "type": "step",
+          "settings": {
+            "icon": "arrow",
+            "title": "We print & deliver",
+            "text": "Your chosen model goes to print. Your finished bust ships directly to your door."
+          }
+        }
+      },
+      "block_order": ["step_1", "step_2", "step_3", "step_4", "step_5"]
+    },
+    "before_after": {
+      "type": "before-after",
+      "settings": {
+        "heading": "See the transformation",
+        "max_items": 10
+      },
+      "blocks": {
+        "example_1": {
+          "type": "example",
+          "settings": {
+            "caption": "Portrait selfie to sculpted bust"
+          }
+        },
+        "example_2": {
+          "type": "example",
+          "settings": {
+            "caption": "Group photo crop to detailed likeness"
+          }
+        },
+        "example_3": {
+          "type": "example",
+          "settings": {
+            "caption": "Low-res snapshot to polished sculpture"
+          }
+        }
+      },
+      "block_order": ["example_1", "example_2", "example_3"]
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "heading": "What our customers say"
+      },
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Absolutely incredible. My bust sits on my mantle and everyone asks about it. Worth every penny.",
+            "author": "Sarah M."
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "I gave one to my dad for Father's Day. He said it was the most narcissistic gift he's ever received — and also his favorite.",
+            "author": "James K."
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "The detail is mind-blowing. They even captured my crooked smile perfectly.",
+            "author": "Maya R."
+          }
+        }
+      },
+      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"]
     }
   },
-  "order": ["main"]
+  "order": ["main", "how_it_works", "before_after", "testimonials"]
 }

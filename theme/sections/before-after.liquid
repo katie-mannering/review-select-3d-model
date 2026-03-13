@@ -1,0 +1,340 @@
+<section class="before-after section-spacing">
+  <div class="before-after__inner page-width">
+    <h2 class="before-after__heading h2">
+      {%- if section.settings.heading != blank -%}{{ section.settings.heading }}{%- else -%}{{ 'sections.before_after.default_heading' | t }}{%- endif -%}
+    </h2>
+    {%- if section.blocks.size > 0 -%}
+      {%- assign max_items = section.settings.max_items | default: 99 -%}
+      <div class="before-after__carousel">
+        <div class="before-after__track" data-before-after-track>
+          {%- for block in section.blocks limit: max_items -%}
+            <div class="before-after__card" data-before-after-card {{ block.shopify_attributes }}>
+              <div class="before-after__image-container">
+                {%- if block.settings.before_image != blank -%}
+                  <img
+                    src="{{ block.settings.before_image | image_url: width: 600 }}"
+                    alt="{{ block.settings.caption | default: 'Before photo' | escape }}"
+                    loading="lazy"
+                    width="600"
+                    height="{{ 600 | divided_by: block.settings.before_image.aspect_ratio | round }}"
+                  >
+                {%- else -%}
+                  <div class="before-after__placeholder">{{ 'sections.before_after.before_label' | t }}</div>
+                {%- endif -%}
+                <span class="before-after__label before-after__label--before">{{ 'sections.before_after.before_label' | t }}</span>
+              </div>
+              <div class="before-after__image-container">
+                {%- if block.settings.after_image != blank -%}
+                  <img
+                    src="{{ block.settings.after_image | image_url: width: 600 }}"
+                    alt="{{ block.settings.caption | default: 'After sculpture' | escape }}"
+                    loading="lazy"
+                    width="600"
+                    height="{{ 600 | divided_by: block.settings.after_image.aspect_ratio | round }}"
+                  >
+                {%- else -%}
+                  <div class="before-after__placeholder">{{ 'sections.before_after.after_label' | t }}</div>
+                {%- endif -%}
+                <span class="before-after__label before-after__label--after">{{ 'sections.before_after.after_label' | t }}</span>
+              </div>
+              {%- if block.settings.caption != blank -%}
+                <p class="before-after__caption">{{ block.settings.caption }}</p>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- assign visible_count = section.blocks.size | at_most: max_items -%}
+        {%- if visible_count > 1 -%}
+          <div class="before-after__nav">
+            <button class="before-after__arrow before-after__arrow--prev" data-before-after-prev aria-label="{{ 'accessibility.slide_previous' | t }}">
+              &#8249;
+            </button>
+            <div class="before-after__dots" data-before-after-dots>
+              {%- for block in section.blocks limit: max_items -%}
+                <button
+                  class="before-after__dot{% if forloop.first %} before-after__dot--active{% endif %}"
+                  data-before-after-dot="{{ forloop.index0 }}"
+                  aria-label="Go to slide {{ forloop.index }}"
+                ></button>
+              {%- endfor -%}
+            </div>
+            <button class="before-after__arrow before-after__arrow--next" data-before-after-next aria-label="{{ 'accessibility.slide_next' | t }}">
+              &#8250;
+            </button>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .before-after__heading {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .before-after__carousel {
+    position: relative;
+  }
+
+  .before-after__track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 1rem;
+  }
+
+  .before-after__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .before-after__card {
+    flex: 0 0 min(90vw, 700px);
+    scroll-snap-align: center;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .before-after__image-container {
+    flex: 1 1 calc(50% - 0.375rem);
+    min-width: 0;
+    position: relative;
+    border-radius: var(--radius-sm, 4px);
+    overflow: hidden;
+    background-color: var(--color-bg, #f5f5f5);
+  }
+
+  .before-after__image-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 3 / 4;
+  }
+
+  .before-after__placeholder {
+    aspect-ratio: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-border, #e0e0e0);
+    color: var(--color-text-secondary, #888);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .before-after__label {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    background-color: var(--color-accent);
+    color: var(--color-bg, #fff);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    line-height: 1.4;
+  }
+
+  .before-after__caption {
+    width: 100%;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary, #666);
+    margin: 0;
+    padding: 0.25rem 0 0;
+  }
+
+  .before-after__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+
+  .before-after__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    background: var(--color-bg-secondary);
+    color: var(--color-text);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+
+  .before-after__arrow:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .before-after__dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .before-after__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--color-border, #ccc);
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+
+  .before-after__dot--active {
+    background-color: var(--color-accent);
+    transform: scale(1.25);
+  }
+
+  @media (min-width: 750px) {
+    .before-after__card {
+      flex: 0 0 700px;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (function () {
+    var track = document.querySelector('[data-before-after-track]');
+    if (!track) return;
+
+    var cards = track.querySelectorAll('[data-before-after-card]');
+    var prevBtn = document.querySelector('[data-before-after-prev]');
+    var nextBtn = document.querySelector('[data-before-after-next]');
+    var dots = document.querySelectorAll('[data-before-after-dot]');
+    var current = 0;
+
+    function scrollToIndex(index) {
+      if (index < 0) index = 0;
+      if (index >= cards.length) index = cards.length - 1;
+      cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      current = index;
+      updateDots();
+    }
+
+    function updateDots() {
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle('before-after__dot--active', i === current);
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        scrollToIndex(current - 1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        scrollToIndex(current + 1);
+      });
+    }
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        scrollToIndex(parseInt(dot.getAttribute('data-before-after-dot'), 10));
+      });
+    });
+
+    // Update active dot on scroll
+    var scrollTimeout;
+    track.addEventListener('scroll', function () {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(function () {
+        var trackRect = track.getBoundingClientRect();
+        var trackCenter = trackRect.left + trackRect.width / 2;
+        var closest = 0;
+        var closestDist = Infinity;
+        cards.forEach(function (card, i) {
+          var cardRect = card.getBoundingClientRect();
+          var cardCenter = cardRect.left + cardRect.width / 2;
+          var dist = Math.abs(cardCenter - trackCenter);
+          if (dist < closestDist) {
+            closestDist = dist;
+            closest = i;
+          }
+        });
+        current = closest;
+        updateDots();
+      }, 100);
+    });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:sections.before_after.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.before_after.settings.heading.label",
+      "default": "See the transformation"
+    },
+    {
+      "type": "range",
+      "id": "max_items",
+      "label": "t:sections.before_after.settings.max_items.label",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 10,
+      "info": "t:sections.before_after.settings.max_items.info"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "example",
+      "name": "t:sections.before_after.blocks.example.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "before_image",
+          "label": "t:sections.before_after.blocks.example.settings.before_image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "after_image",
+          "label": "t:sections.before_after.blocks.example.settings.after_image.label"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "t:sections.before_after.blocks.example.settings.caption.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.before_after.name",
+      "blocks": [
+        { "type": "example", "settings": { "caption": "Portrait selfie to sculpted bust" } },
+        { "type": "example", "settings": { "caption": "Group photo crop to detailed likeness" } },
+        { "type": "example", "settings": { "caption": "Low-res snapshot to polished sculpture" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

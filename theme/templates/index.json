@@ -3,9 +3,10 @@
     "hero": {
       "type": "hero-banner",
       "settings": {
-        "heading": "Your image. Our tech.",
+        "tagline": "Where craft meets code",
+        "heading": "Your images. Our tech.",
         "subheading": "Custom 3D printed sculpture busts crafted from your photos.",
-        "cta_text": "Shop Now",
+        "cta_text": "Order yours",
         "overlay_opacity": 60
       }
     },
@@ -15,34 +16,63 @@
         "heading": "The signature bust"
       }
     },
+    "before_after": {
+      "type": "before-after",
+      "settings": {
+        "heading": "See the transformation",
+        "max_items": 1
+      },
+      "blocks": {
+        "example_1": {
+          "type": "example",
+          "settings": {
+            "caption": "Portrait selfie to sculpted bust"
+          }
+        },
+        "example_2": {
+          "type": "example",
+          "settings": {
+            "caption": "Group photo crop to detailed likeness"
+          }
+        },
+        "example_3": {
+          "type": "example",
+          "settings": {
+            "caption": "Low-res snapshot to polished sculpture"
+          }
+        }
+      },
+      "block_order": ["example_1", "example_2", "example_3"]
+    },
     "how_it_works": {
       "type": "how-it-works",
       "settings": {
-        "heading": "How it works"
+        "heading": "How it works",
+        "compact": true
       },
       "blocks": {
         "step_1": {
           "type": "step",
           "settings": {
             "icon": "upload",
-            "title": "Upload",
-            "text": "Send us your favorite photo — any angle, any expression."
+            "title": "Order & upload",
+            "text": "Purchase and send us your favourite photo."
           }
         },
         "step_2": {
           "type": "step",
           "settings": {
             "icon": "star",
-            "title": "Sculpt",
-            "text": "Our artists digitally sculpt your likeness with obsessive detail."
+            "title": "We sculpt",
+            "text": "Our AI generates multiple 3D model options from your photo."
           }
         },
         "step_3": {
           "type": "step",
           "settings": {
             "icon": "arrow",
-            "title": "Display",
-            "text": "Receive your museum-quality bust, ready to turn heads."
+            "title": "You choose & we print",
+            "text": "Pick your favourite model and we print and deliver your bust."
           }
         }
       },
@@ -51,7 +81,7 @@
     "philosophy": {
       "type": "philosophy",
       "settings": {
-        "heading": "Head in tech, heart in art",
+        "heading": "Where craft meets code",
         "text": "<p>We believe everyone deserves to be immortalized in sculpture. What was once reserved for emperors and aristocrats is now available to anyone with a selfie and a sense of humor.</p>"
       }
     },
@@ -89,5 +119,5 @@
       "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"]
     }
   },
-  "order": ["hero", "featured", "how_it_works", "philosophy", "testimonials"]
+  "order": ["hero", "featured", "before_after", "how_it_works", "philosophy", "testimonials"]
 }

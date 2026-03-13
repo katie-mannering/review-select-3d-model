@@ -1,4 +1,4 @@
-<section class="how-it-works section-spacing">
+<section class="how-it-works section-spacing{% if section.settings.compact %} how-it-works--compact{% endif %}">
   <div class="how-it-works__inner page-width">
     <h2 class="how-it-works__heading h2">
       {%- if section.settings.heading != blank -%}{{ section.settings.heading }}{%- else -%}{{ 'sections.how_it_works.default_heading' | t }}{%- endif -%}
@@ -80,9 +80,26 @@
     font-size: 0.9375rem;
   }
 
+  .how-it-works--compact {
+    padding-block: 3rem;
+  }
+
+  .how-it-works--compact .how-it-works__heading {
+    font-size: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .how-it-works--compact .how-it-works__step-text {
+    font-size: 0.875rem;
+  }
+
+  .how-it-works--compact .how-it-works__steps {
+    gap: 1.5rem;
+  }
+
   @media (min-width: 750px) {
     .how-it-works__steps {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
   }
 {% endstylesheet %}
@@ -96,6 +113,13 @@
       "id": "heading",
       "label": "t:sections.how_it_works.settings.heading.label",
       "default": "How it works"
+    },
+    {
+      "type": "checkbox",
+      "id": "compact",
+      "label": "t:sections.how_it_works.settings.compact.label",
+      "default": false,
+      "info": "t:sections.how_it_works.settings.compact.info"
     }
   ],
   "blocks": [

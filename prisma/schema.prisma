@@ -9,8 +9,9 @@ generator client {
 // enough when changing adapters.
 // See https://www.prisma.io/docs/orm/reference/prisma-schema-reference#string for more information
 datasource db {
-  provider = "sqlite"
-  url      = "file:dev.sqlite"
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+  // url = "postgresql://incahoots3d:rupertbear@localhost:5432/incahoots3d?schema=incahoots3d"
 }
 
 model Session {
@@ -34,27 +35,28 @@ model Session {
 }
 
 model ModelOrder {
-  id               Int    @id
-  shopify_cust_id  String
-  shopify_order_id String
+  id                     Int                @id @default(autoincrement())
+  shopify_cust_id        String
+  shopify_order_id       String
 
-  order_status     OrderStatus
-  ModelOrderInputs ModelOrderInputs[]
-  ModelGenerations ModelGenerations[]
+  order_status           OrderStatus
+  cusomer_action_message String?
+  ModelOrderInputs       ModelOrderInputs[]
+  ModelGenerations       ModelGenerations[]
 }
 
 model ModelOrderInputs {
-  Id           Int        @id
+  id           Int        @id @default(autoincrement())
   ModelOrder   ModelOrder @relation(fields: [modelOrderId], references: [id])
   modelOrderId Int
   url          String
 }
 
 model ModelGenerations {
-  id             Int              @id
-  ModelOrder     ModelOrder       @relation(fields: [modelOrderId], references: [id])
+  id             Int        @id @default(autoincrement())
+  ModelOrder     ModelOrder @relation(fields: [modelOrderId], references: [id])
   modelOrderId   Int
-  selectedByCust Boolean          @default(false)
+  selectedByCust Boolean    @default(false)
   glbUrl         String?
   stlUrl         String?
   mf3Url         String?
@@ -65,6 +67,7 @@ enum OrderStatus {
   AWAITING_IMAGE
   PREPROCESSING_IMAGE
   GENERATING_3D_MODEL
+  CUSTOMER_ACTION
   POSTPROCESSING
   MODEL_QA
   QA_OK

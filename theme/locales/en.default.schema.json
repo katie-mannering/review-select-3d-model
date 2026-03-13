@@ -55,6 +55,9 @@
         "image": {
           "label": "Background image"
         },
+        "tagline": {
+          "label": "Tagline"
+        },
         "heading": {
           "label": "Heading"
         },
@@ -88,6 +91,10 @@
       "settings": {
         "heading": {
           "label": "Heading"
+        },
+        "compact": {
+          "label": "Compact layout",
+          "info": "Use on the home page for a smaller taster version"
         }
       },
       "blocks": {
@@ -107,6 +114,34 @@
         },
         "image": {
           "label": "Image"
+        }
+      }
+    },
+    "before_after": {
+      "name": "Before & after",
+      "settings": {
+        "heading": {
+          "label": "Heading"
+        },
+        "max_items": {
+          "label": "Max examples to show",
+          "info": "Limit to 1 on the home page for a taster; show all on the product page"
+        }
+      },
+      "blocks": {
+        "example": {
+          "name": "Example",
+          "settings": {
+            "before_image": {
+              "label": "Before image"
+            },
+            "after_image": {
+              "label": "After image"
+            },
+            "caption": {
+              "label": "Caption"
+            }
+          }
         }
       }
     },
