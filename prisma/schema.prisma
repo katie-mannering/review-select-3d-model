@@ -10,7 +10,7 @@ generator client {
 // See https://www.prisma.io/docs/orm/reference/prisma-schema-reference#string for more information
 datasource db {
   provider = "postgresql"
-  url = env("DATABASE_URL")
+  url      = env("DATABASE_URL")
   // url = "postgresql://incahoots3d:rupertbear@localhost:5432/incahoots3d?schema=incahoots3d"
 }
 
@@ -35,21 +35,34 @@ model Session {
 }
 
 model ModelOrder {
-  id                     Int                @id @default(autoincrement())
-  shopify_cust_id        String
-  shopify_order_id       String
-
-  order_status           OrderStatus
-  cusomer_action_message String?
-  ModelOrderInputs       ModelOrderInputs[]
-  ModelGenerations       ModelGenerations[]
+  id                      Int                @id @default(autoincrement())
+  shopify_cust_id         String
+  shopify_order_id        String
+  order_number            String
+  customer_email          String
+  customer_first_name     String
+  customer_last_name      String
+  size_cm                 Int
+  colour                  Colour
+  upload_token            String             @unique
+  review_token            String?            @unique
+  requires_manual_review  Boolean            @default(false)
+  in_error_state          Boolean            @default(false)
+  error_info              String?
+  order_status            OrderStatus
+  customer_action_message String?
+  placed                  DateTime
+  ModelOrderInputs        ModelOrderInputs[]
+  ModelGenerations        ModelGenerations[]
 }
 
 model ModelOrderInputs {
   id           Int        @id @default(autoincrement())
   ModelOrder   ModelOrder @relation(fields: [modelOrderId], references: [id])
   modelOrderId Int
+  image_type   ImageType
   url          String
+  uploaded     DateTime
 }
 
 model ModelGenerations {
@@ -57,22 +70,34 @@ model ModelGenerations {
   ModelOrder     ModelOrder @relation(fields: [modelOrderId], references: [id])
   modelOrderId   Int
   selectedByCust Boolean    @default(false)
+  generated      DateTime
   glbUrl         String?
   stlUrl         String?
   mf3Url         String?
 }
 
+enum ImageType {
+  PNG
+  JPG
+  WEBP
+}
+
+enum Colour {
+  white
+  black
+  grey
+}
+
 enum OrderStatus {
-  REQUESTED
+  PURCHASED
   AWAITING_IMAGE
-  PREPROCESSING_IMAGE
-  GENERATING_3D_MODEL
-  CUSTOMER_ACTION
-  POSTPROCESSING
-  MODEL_QA
-  QA_OK
-  QA_NOK
+  CUSTOMER_IMAGE_UPLOADED
+  IMAGE_FAILED_VALIDATION
+  IMAGE_PREPROCESSED
+  MODEL_GENERATED
+  POST_PROCESSED
+  MODEL_QA_COMPLETE
   AWAITING_CHOICE
-  READY_FOR_PRINING
+  MODEL_SELECTED
   CANCELLED
 }

@@ -1,12 +1,12 @@
 import type { LoaderFunctionArgs } from "react-router";
 import { useLoaderData } from "react-router";
 import { authenticate } from "../shopify.server";
-import { getPresignedUrl } from "../s3.server";
+import { storage } from "../s3.server";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   await authenticate.admin(request);
 
-  const modelUrl = await getPresignedUrl(
+  const modelUrl = await storage.getPresignedUrl(
     "test-3d-display/mum-2-1-model-with-base.glb",
   );
 

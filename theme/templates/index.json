@@ -10,12 +10,6 @@
         "overlay_opacity": 60
       }
     },
-    "featured": {
-      "type": "featured-product",
-      "settings": {
-        "heading": "The signature bust"
-      }
-    },
     "before_after": {
       "type": "before-after",
       "settings": {
@@ -119,5 +113,5 @@
       "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"]
     }
   },
-  "order": ["hero", "featured", "before_after", "how_it_works", "philosophy", "testimonials"]
+  "order": ["hero", "before_after", "how_it_works", "philosophy", "testimonials"]
 }
