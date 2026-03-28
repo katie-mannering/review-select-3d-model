@@ -1,0 +1,22 @@
+{
+  "_note": "PLACEHOLDER — replace with real output from the FIXTURE variant: console log in order-webhook.server.ts",
+  "data": {
+    "productVariant": {
+      "selectedOptions": [
+        { "name": "Color", "value": "White" },
+        { "name": "Size", "value": "10\"" }
+      ]
+    }
+  },
+  "extensions": {
+    "cost": {
+      "requestedQueryCost": 1,
+      "actualQueryCost": 1,
+      "throttleStatus": {
+        "maximumAvailable": 1000.0,
+        "currentlyAvailable": 999,
+        "restoreRate": 50.0
+      }
+    }
+  }
+}
