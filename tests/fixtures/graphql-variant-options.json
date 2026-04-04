@@ -1,22 +1,119 @@
 {
-  "_note": "PLACEHOLDER — replace with real output from the FIXTURE variant: console log in order-webhook.server.ts",
   "data": {
     "productVariant": {
       "selectedOptions": [
-        { "name": "Color", "value": "White" },
-        { "name": "Size", "value": "10\"" }
+        {
+          "name": "Color",
+          "value": "White"
+        },
+        {
+          "name": "Size",
+          "value": "10\""
+        }
       ]
     }
   },
   "extensions": {
     "cost": {
-      "requestedQueryCost": 1,
-      "actualQueryCost": 1,
+      "requestedQueryCost": 2,
+      "actualQueryCost": 2,
       "throttleStatus": {
-        "maximumAvailable": 1000.0,
-        "currentlyAvailable": 999,
-        "restoreRate": 50.0
+        "maximumAvailable": 2000,
+        "currentlyAvailable": 1998,
+        "restoreRate": 100
       }
     }
+  },
+  "headers": {
+    "Alt-Svc": [
+      "h3=\":443\"; ma=86400"
+    ],
+    "Cf-Cache-Status": [
+      "DYNAMIC"
+    ],
+    "Cf-Ray": [
+      "9e70c5562eb69460-LHR"
+    ],
+    "Connection": [
+      "keep-alive"
+    ],
+    "Content-Encoding": [
+      "gzip"
+    ],
+    "Content-Language": [
+      "en"
+    ],
+    "Content-Security-Policy": [
+      "default-src 'self' data: blob: 'unsafe-inline' 'unsafe-eval' https://* shopify-pos://*; block-all-mixed-content; child-src 'self' https://* shopify-pos://*; connect-src 'self' wss://* https://*; frame-ancestors 'none'; img-src 'self' data: blob: https:; script-src https://cdn.shopify.com https://cdn.shopifycdn.net https://checkout.pci.shopifyinc.com https://checkout.pci.shopifyinc.com/build/04ed4e1/card_fields.js https://api.stripe.com https://mpsnare.iesnare.com https://appcenter.intuit.com https://www.paypal.com https://js.braintreegateway.com https://c.paypal.com https://maps.googleapis.com https://www.google-analytics.com https://v.shopify.com 'self' 'unsafe-inline' 'unsafe-eval'; upgrade-insecure-requests; report-uri /csp-report?source%5Baction%5D=query&source%5Bapp%5D=Shopify&source%5Bcontroller%5D=admin%2Fgraphql&source%5Bsection%5D=admin_api&source%5Buuid%5D=3305b436-c5bf-47c4-9b63-59356799c66d-1775310508; report-to shopify-csp"
+    ],
+    "Content-Type": [
+      "application/json; charset=utf-8"
+    ],
+    "Date": [
+      "Sat, 04 Apr 2026 13:48:28 GMT"
+    ],
+    "Nel": [
+      "{\"success_fraction\":0.01,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+    ],
+    "Referrer-Policy": [
+      "origin-when-cross-origin"
+    ],
+    "Report-To": [
+      "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=i%2FK4UL4oYVJQv%2FULoparEAFV5hYE7dCxxs1%2B9g7IAJ1A9YwJhnZ30AADRKfbe5YAmD8ADEPb8cbE66SCeX9bH1bo3LxiDHUGOIF75Yy9clA5UVJdydpYWf2H34%2F0x0FsbWQJVasGeEwvkDp7mAH%2B\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+    ],
+    "Reporting-Endpoints": [
+      "shopify-csp=\"/csp-report?source%5Baction%5D=query&source%5Bapp%5D=Shopify&source%5Bcontroller%5D=admin%2Fgraphql&source%5Bsection%5D=admin_api&source%5Buuid%5D=3305b436-c5bf-47c4-9b63-59356799c66d-1775310508\""
+    ],
+    "Server": [
+      "cloudflare"
+    ],
+    "Server-Timing": [
+      "processing;dur=62, verdict_flag_enabled;desc=\"count=14\";dur=0.783, graphql;desc=\"admin/query/other\", _y;desc=\"c065ab52-72ba-4631-bb17-f3bb0d0996c3\", _s;desc=\"cfd5d87b-4275-4fcc-8b6b-cc4551f34a31\", cfRequestDuration;dur=102.999926"
+    ],
+    "Strict-Transport-Security": [
+      "max-age=7889238"
+    ],
+    "Transfer-Encoding": [
+      "chunked"
+    ],
+    "Vary": [
+      "Accept-Encoding,Sec-Fetch-Site"
+    ],
+    "X-Content-Type-Options": [
+      "nosniff"
+    ],
+    "X-Dc": [
+      "gcp-europe-west1,gcp-europe-west4,gcp-europe-west4"
+    ],
+    "X-Download-Options": [
+      "noopen"
+    ],
+    "X-Frame-Options": [
+      "DENY"
+    ],
+    "X-Permitted-Cross-Domain-Policies": [
+      "none"
+    ],
+    "X-Request-Id": [
+      "3305b436-c5bf-47c4-9b63-59356799c66d-1775310508"
+    ],
+    "X-Shopify-Api-Gql-Engine": [
+      "cardinal"
+    ],
+    "X-Shopify-Api-Version": [
+      "2025-10"
+    ],
+    "X-Stats-Apiclientid": [
+      "319308267521"
+    ],
+    "X-Stats-Apipermissionid": [
+      "989920330074"
+    ],
+    "X-Stats-Userid": [
+      ""
+    ],
+    "X-Xss-Protection": [
+      "1; mode=block"
+    ]
   }
 }

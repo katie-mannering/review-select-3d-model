@@ -1,27 +1,124 @@
+
 {
-  "_note": "PLACEHOLDER — replace with real output from the FIXTURE order: console log in order-webhook.server.ts",
   "data": {
     "order": {
-      "name": "#1012",
+      "name": "#1021",
+      "email": "katie.mannering@incahoots3d.com",
       "billingAddress": {
         "firstName": "Katie",
         "lastName": "Mannering"
       },
       "customer": {
         "firstName": "Katie",
-        "lastName": "Mannering"
+        "lastName": "Mannering",
+        "email": "katie.mannering@incahoots3d.com"
       }
     }
   },
   "extensions": {
     "cost": {
-      "requestedQueryCost": 10,
-      "actualQueryCost": 10,
+      "requestedQueryCost": 3,
+      "actualQueryCost": 3,
       "throttleStatus": {
-        "maximumAvailable": 1000.0,
-        "currentlyAvailable": 990,
-        "restoreRate": 50.0
+        "maximumAvailable": 2000,
+        "currentlyAvailable": 1997,
+        "restoreRate": 100
       }
     }
+  },
+  "headers": {
+    "Alt-Svc": [
+      "h3=\":443\"; ma=86400"
+    ],
+    "Cf-Cache-Status": [
+      "DYNAMIC"
+    ],
+    "Cf-Ray": [
+      "9e70c5570f819460-LHR"
+    ],
+    "Connection": [
+      "keep-alive"
+    ],
+    "Content-Encoding": [
+      "gzip"
+    ],
+    "Content-Language": [
+      "en"
+    ],
+    "Content-Security-Policy": [
+      "default-src 'self' data: blob: 'unsafe-inline' 'unsafe-eval' https://* shopify-pos://*; block-all-mixed-content; child-src 'self' https://* shopify-pos://*; connect-src 'self' wss://* https://*; frame-ancestors 'none'; img-src 'self' data: blob: https:; script-src https://cdn.shopify.com https://cdn.shopifycdn.net https://checkout.pci.shopifyinc.com https://checkout.pci.shopifyinc.com/build/04ed4e1/card_fields.js https://api.stripe.com https://mpsnare.iesnare.com https://appcenter.intuit.com https://www.paypal.com https://js.braintreegateway.com https://c.paypal.com https://maps.googleapis.com https://www.google-analytics.com https://v.shopify.com 'self' 'unsafe-inline' 'unsafe-eval'; upgrade-insecure-requests; report-uri /csp-report?source%5Baction%5D=query&source%5Bapp%5D=Shopify&source%5Bcontroller%5D=admin%2Fgraphql&source%5Bsection%5D=admin_api&source%5Buuid%5D=f387560d-f9a6-4c32-aa44-64db40bee2f4-1775310508; report-to shopify-csp"
+    ],
+    "Content-Type": [
+      "application/json; charset=utf-8"
+    ],
+    "Date": [
+      "Sat, 04 Apr 2026 13:48:28 GMT"
+    ],
+    "Nel": [
+      "{\"success_fraction\":0.01,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+    ],
+    "Referrer-Policy": [
+      "origin-when-cross-origin"
+    ],
+    "Report-To": [
+      "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=P05AyNWDXllgDwB2VCEX3YMJyp2te55o36KRyV%2BwW0qFtgvZnGOGY831WQZxiz%2FeR0dDghd6Us1dcNMHeBBMTT274eKrSZuXBx%2B7%2BpKhA4xhkAkLHaK3XprvjQGKhgyrP65L3ogZdbEeY0i1KG4m\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+    ],
+    "Reporting-Endpoints": [
+      "shopify-csp=\"/csp-report?source%5Baction%5D=query&source%5Bapp%5D=Shopify&source%5Bcontroller%5D=admin%2Fgraphql&source%5Bsection%5D=admin_api&source%5Buuid%5D=f387560d-f9a6-4c32-aa44-64db40bee2f4-1775310508\""
+    ],
+    "Server": [
+      "cloudflare"
+    ],
+    "Server-Timing": [
+      "processing;dur=50, verdict_flag_enabled;desc=\"count=16\";dur=0.713, graphql;desc=\"admin/query/other\", _y;desc=\"12536438-9c4a-4c70-84da-27adf45d78a9\", _s;desc=\"0c264596-7a40-4472-a0ff-f507bb5e17aa\", cfRequestDuration;dur=108.000040"
+    ],
+    "Strict-Transport-Security": [
+      "max-age=7889238"
+    ],
+    "Transfer-Encoding": [
+      "chunked"
+    ],
+    "Vary": [
+      "Accept-Encoding,Sec-Fetch-Site"
+    ],
+    "X-Content-Type-Options": [
+      "nosniff"
+    ],
+    "X-Dc": [
+      "gcp-europe-west1,gcp-europe-west4,gcp-europe-west4"
+    ],
+    "X-Download-Options": [
+      "noopen"
+    ],
+    "X-Frame-Options": [
+      "DENY"
+    ],
+    "X-Permitted-Cross-Domain-Policies": [
+      "none"
+    ],
+    "X-Request-Id": [
+      "f387560d-f9a6-4c32-aa44-64db40bee2f4-1775310508"
+    ],
+    "X-Shopify-Api-Deprecated-Reason": [
+      "Customer.email"
+    ],
+    "X-Shopify-Api-Gql-Engine": [
+      "cardinal"
+    ],
+    "X-Shopify-Api-Version": [
+      "2025-10"
+    ],
+    "X-Stats-Apiclientid": [
+      "319308267521"
+    ],
+    "X-Stats-Apipermissionid": [
+      "989920330074"
+    ],
+    "X-Stats-Userid": [
+      ""
+    ],
+    "X-Xss-Protection": [
+      "1; mode=block"
+    ]
   }
 }

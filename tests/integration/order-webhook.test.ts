@@ -28,6 +28,7 @@ async function stubShopifyGraphQL(
     orderName?: string;
     firstName?: string;
     lastName?: string;
+    email?: string;
   } = {},
 ) {
   const {
@@ -36,6 +37,7 @@ async function stubShopifyGraphQL(
     orderName = orderCustomerFixture.data.order.name,
     firstName = orderCustomerFixture.data.order.customer.firstName,
     lastName = orderCustomerFixture.data.order.customer.lastName,
+    email = orderCustomerFixture.data.order.customer.email,
   } = options;
 
   await stubWireMock(wireMockUrl, {
@@ -77,7 +79,7 @@ async function stubShopifyGraphQL(
             ...orderCustomerFixture.data.order,
             name: orderName,
             billingAddress: { firstName, lastName },
-            customer: { firstName, lastName },
+            customer: { firstName, lastName, email },
           },
         },
       },
@@ -126,6 +128,7 @@ describe("processOrderPaid integration", () => {
       size_cm: 10,
       customer_first_name: orderCustomerFixture.data.order.customer.firstName,
       customer_last_name: orderCustomerFixture.data.order.customer.lastName,
+      customer_email: orderCustomerFixture.data.order.customer.email,
       order_status: "PURCHASED",
     });
   });

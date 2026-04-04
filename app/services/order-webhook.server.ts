@@ -1,4 +1,5 @@
 import { randomUUID } from "crypto";
+import { writeFileSync } from "fs";
 import type { PrismaClient, Colour } from "@prisma/client";
 import type { ShopifyAdminClient } from "../ports/shopify-admin";
 
@@ -33,11 +34,11 @@ const VARIANT_OPTIONS_QUERY = `#graphql
   }
 `;
 
-// email requires Shopify Protected Customer Data approval — only fetch name fields for now
 const ORDER_CUSTOMER_QUERY = `#graphql
   query GetOrderCustomer($id: ID!) {
     order(id: $id) {
       name
+      email
       billingAddress {
         firstName
         lastName
@@ -45,6 +46,7 @@ const ORDER_CUSTOMER_QUERY = `#graphql
       customer {
         firstName
         lastName
+        email
       }
     }
   }
@@ -77,8 +79,6 @@ export async function processOrderPaid(
     variables: { id: variantGid },
   });
   const variantJson = await variantResponse.json();
-  // FIXTURE CAPTURE: copy this output into tests/fixtures/graphql-variant-options.json
-  console.log("FIXTURE variant:", JSON.stringify(variantJson, null, 2));
   const { data: variantData } = variantJson;
   const selectedOptions: { name: string; value: string }[] =
     variantData?.productVariant?.selectedOptions ?? [];
@@ -108,13 +108,10 @@ export async function processOrderPaid(
     variables: { id: orderGid },
   });
   const orderJson = await orderResponse.json();
-  // FIXTURE CAPTURE: copy this output into tests/fixtures/graphql-order-customer.json
-  console.log("FIXTURE order:", JSON.stringify(orderJson, null, 2));
   const { data } = orderJson;
   const orderData = data?.order;
 
-  // TODO: add orderData?.customer?.email once Protected Customer Data access is approved
-  const customerEmail = "";
+  const customerEmail = orderData?.customer?.email ?? orderData?.email ?? "";
   const customerFirstName =
     orderData?.customer?.firstName ?? orderData?.billingAddress?.firstName ?? "";
   const customerLastName =
